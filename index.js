@@ -19,14 +19,20 @@ console.log(Cnames(names))
 
 //ex3
 function countWords(str){
-  const words=str
-    .trim()
-    .split(" ")
-    .filter(selword=>selword!=="")
   const result={}
-  for (const selword of words){
-    result[selword]=(result[selword]||0)+1
-}
+  let word=""
+  for(let i=0;i<str.length;i++){
+    const char=str[i]
+    if (char !==" "){
+    word += char
+    }else if (word!==""){
+    result[word]=(result[word]||0)+1
+    word=""
+    }
+  }
+  if(word!==""){
+  result[word]=(result[word]||0)+1
+  }
   return result
 }
 console.log(countWords("tgp welcome 123"))
